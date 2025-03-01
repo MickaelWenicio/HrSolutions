@@ -1,0 +1,52 @@
+<div class="dashboard-container">
+    <h2>Painel Administrativo</h2>
+
+    <div class="search-export-container">
+        <div class="input-container">
+            <input type="text" [(ngModel)]="searchQuery" class="input" placeholder="Pesquisar por nome, e-mail ou CPF" (input)="applyFilter()">
+        </div>
+        <button (click)="exportToExcel()">
+            <img src="download-icon.svg" alt="Exportar para Excel">
+            Exportar para Excel
+        </button>
+    </div>
+
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>E-mail</th>
+                    <th>CPF</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let collaborator of filteredCollaborators | paginate: { itemsPerPage: 5, currentPage: currentPage }">
+                    <td>{{ collaborator.name }}</td>
+                    <td>{{ collaborator.email }}</td>
+                    <td>{{ collaborator.cpf }}</td>
+                    <td>
+                        <button (click)="viewDetails(collaborator)">
+                            <img src="/view-icon.svg" alt="Visualizar">
+                            Visualizar
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Paginação com textos em português -->
+    <div class="pagination-container">
+        <pagination-controls
+            (pageChange)="currentPage = $event"
+            [responsive]="true"
+            previousLabel="Anterior"
+            nextLabel="Próximo"
+            screenReaderPaginationLabel="Paginação"
+            screenReaderPageLabel="página"
+            screenReaderCurrentLabel="Você está na página">
+        </pagination-controls>
+    </div>
+</div>

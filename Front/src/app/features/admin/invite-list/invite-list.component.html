@@ -1,0 +1,46 @@
+<div class="invite-container">
+    <h2>Convidar Colaborador</h2>
+    
+    <form [formGroup]="inviteForm" (ngSubmit)="sendInvite()">
+      <div class="input-container">
+        <input id="email" type="email" class="input" formControlName="email" placeholder="Digite o e-mail">
+        <button type="submit" [disabled]="inviteForm.invalid"><img src="envelope-icon.svg">Enviar Convite</button>
+      </div>
+      <div *ngIf="email?.invalid && email?.touched" class="error-message">
+        <span *ngIf="email?.errors?.['required']">O e-mail é obrigatório.</span>
+        <span *ngIf="email?.errors?.['email']">Formato inválido.</span>
+      </div>
+    </form>
+    
+    <p *ngIf="successMessage" class="success-message">{{ successMessage }}</p>
+    
+    <div class="invite-status-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                        Email
+                    </th>
+                    <th>
+                        Status
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>email&#64;email.com</td>
+                    <td><span class="status status-open">Em Aberto</span></td>
+                </tr>
+                <tr>
+                    <td>email&#64;email.com</td>
+                    <td><span class="status status-finished">Finalizado</span></td>
+                </tr>
+                <tr>
+                    <td>email&#64;email.com</td>
+                    <td><span class="status status-expired">Vencido</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+  </div>
+  

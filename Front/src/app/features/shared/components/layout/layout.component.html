@@ -1,0 +1,35 @@
+<div class="layout-full-width">
+    <div class="layout-container">
+        <div class="sidebar" [ngClass]="{ 'closed': isClosed }">
+            <div id="intern-container-sidebar">
+                <div id="menu-container" (click)="changeIsClosed()">
+                    <img src="/menu-icon.svg">
+                    <span>Fechar</span>
+                </div>
+
+                <ul>
+                    <li routerLinkActive="active">
+                        <a routerLink="/painel">
+                            <img src="/admin-icon.svg">
+                            <span>Painel Administrativo</span>
+                        </a>
+                    </li>
+                    <li routerLinkActive="active">
+                        <a routerLink="/convites">
+                            <img src="/invite-icon.svg">
+                            <span>Convite de Colaboradores</span>
+                        </a>
+                    </li>
+                </ul>
+                <div id="logout-container">
+                    <img src="/logout-icon.svg">
+                    <span>Sair</span>
+                </div>
+            </div>
+        </div>
+        <!-- Container Dinâmico -->
+        <div class="component-container">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

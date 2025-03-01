@@ -1,0 +1,115 @@
+.collaborator-details-container {
+    padding: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+    height: 90vh; /* Altura fixa para o contêiner principal */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    .btn-back {
+        padding: 8px 16px;
+        background-color: #f0f0f0;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 14px;
+        position: absolute;
+
+        img {
+            width: 16px;
+        }
+
+        &:hover {
+            background-color: #e0e0e0;
+        }
+    }
+
+    h2 {
+        font-size: 24px;
+        color: #333;
+        text-align: center;
+    }
+
+    .scroll-container {
+        flex: 1; /* Ocupa o espaço restante */
+        overflow-y: auto; /* Habilita o scroll vertical */
+        padding-right: 10px; /* Espaço para o scroll */
+
+        /* Personalização do scroll */
+        &::-webkit-scrollbar {
+            width: 8px; /* Largura do scroll */
+        }
+
+        &::-webkit-scrollbar-track {
+            background: #f1f1f1; /* Cor de fundo do track */
+            border-radius: 4px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background: #888; /* Cor do thumb */
+            border-radius: 4px;
+
+            &:hover {
+                background: #555; /* Cor do thumb ao passar o mouse */
+            }
+        }
+    }
+
+    .collaborator-form {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+        .form-group {
+            margin-bottom: 15px;
+
+            label {
+                display: block;
+                margin-bottom: 5px;
+                font-weight: bold;
+                color: #555;
+            }
+
+            .input {
+                width: 100%;
+                padding: 10px;
+                border: 1px solid #ddd;
+                border-radius: 5px;
+                font-size: 16px;
+                color: #333;
+                background-color: #f9f9f9;
+            }
+
+            select.input {
+                appearance: none;
+                background-color: #fff;
+                cursor: pointer;
+            }
+        }
+
+        #password-field {
+            display: none; /* Inicialmente oculto */
+        }
+
+        .btn-save {
+            width: 100%;
+            padding: 12px;
+            background-color: #2196f3;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+
+            &:hover {
+                background-color: #1e88e5;
+            }
+        }
+    }
+}
