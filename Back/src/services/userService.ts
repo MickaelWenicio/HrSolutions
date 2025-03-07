@@ -12,7 +12,7 @@ class userService {
                 return new userModel(user);
             });
 
-            return data
+            return {status: 200, message:"Usuários encontrados com sucesso.", info: data};
         }catch(err){
             console.error(err);
             throw new Error("Error in getAllUsers");
@@ -25,7 +25,12 @@ class userService {
         try{
             const response = await client.query(query, [id]);
             const data = response.rows[0];
-            return data;
+
+            if(!data){
+                return { status: 404, message: "Usuário não Encontrado.", info: ""};
+            }
+            
+            return {status: 200, message: "Usuário Encontrado.", info: data};
         }catch(err){
             console.error(err);
             throw new Error("Error in getSingleUser");

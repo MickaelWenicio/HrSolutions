@@ -7,7 +7,8 @@ class userController {
             const users = await userService.getAllUsers(); 
             res.status(200).json(users);
         } catch (err) {
-            res.status(500).json({message: "Unexpected error getting users"})
+            console.error(err);
+            res.status(500).json({message: "Erro inesperado ao buscar usuários."})
         };
     };
 
@@ -15,13 +16,11 @@ class userController {
         const {id} = req.body;
         
         try{
-            const user = await userService.getSingleUser(id);
-            if(!user){
-                res.status(404).json({message: "User not found"});
-            }
-            res.status(200).json(user);
+            const data = await userService.getSingleUser(id);
+            res.status(data.status).json({message: data.message, user:data.info});
         }catch(err){
-            res.status(500).json({message: "Unexpected error getting user"});
+            console.error(err);
+            res.status(500).json({message: "Erro inesperado ao buscar usuário."});
         };
     };
 };
