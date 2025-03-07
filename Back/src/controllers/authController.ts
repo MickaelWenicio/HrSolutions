@@ -6,7 +6,7 @@ class authController{
         const {cpf, password} = req.body;
         try{
             const data = await authService.login({cpf, password});
-            res.status(data.status).json({message: data.message, user: data.info});
+            res.status(data.status).json({message: data.message, authInfo: data.info});
         }catch(err){
             res.status(500).json({message: "Unexpected error login"});
         };
