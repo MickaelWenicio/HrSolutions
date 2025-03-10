@@ -10,8 +10,9 @@ export default class userModel {
     neighborhood: string;
     street: string;
     password: string;
-    created_at: Date | null;
-    updated_at: Date | null;
+    profileId: number;
+    createdAt: Date | null;
+    updatedAt: Date | null;
     
     constructor(data: {
         id: number | null,
@@ -25,6 +26,7 @@ export default class userModel {
         neighborhood: string,
         street: string,
         password: string,
+        profile_id: number,
         created_at: Date | null,
         updated_at: Date | null,
     }){
@@ -39,7 +41,8 @@ export default class userModel {
         this.neighborhood = data.neighborhood;
         this.street = data.street;
         this.password = data.password;
-        this.created_at = data.created_at ?? null;
-        this.updated_at = data.updated_at ?? null;
+        this.profileId = data.profile_id;
+        this.createdAt = data.created_at ?? null;
+        this.updatedAt = data.updated_at ?? null;
     };
 };
